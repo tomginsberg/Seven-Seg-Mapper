@@ -29,4 +29,5 @@ def get_loc(segnum, varname, invert = True):
     return reduce(lambda x,y: x+y, ["set_location_assignment {} -to {}[{}]\n".format(segs[segnum][i],varname,int(6*invert-2*(invert-1/2)*i)) for i in range(7)])
 
 with open(glob.glob(path_name+"*.qsf")[0], "a") as f: 
+        f.write("\n")
         for i in variable_names: f.write(get_loc(i,variable_names[i]))
